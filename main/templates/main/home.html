@@ -1,0 +1,181 @@
+{% extends "main/header-footer.html" %}
+{% load static %}
+{% block welcome-hero-txt %}
+	<div class="container">
+		<div class="welcome-hero-txt">
+			<h2>Get your dream config here at the best price !</h2>
+			<p>
+				Control your gaming experience,boost maximum performance with our custom built gaming pc's.
+			</p>
+			<button class="visit-shop-btn" onclick="window.location.href='{% url 'shop'%}'">Visit shop</button>
+			<button class="welcome-btn" onclick="window.location.href='#'">contact us</button>
+		</div>
+	</div>
+{% endblock %}
+{% block content %}
+    	<!--service start -->
+            <section id="service" class="service" style="background-color:#4b79a4;">
+                <div class="container">
+                    <div class="service-content">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="single-service-item">
+                                    <div class="single-service-icon">
+                                        <img src="{% static 'main/assets/images/services/shop.jpg' %}" alt="img"/>
+                                    </div>
+                                    <h2><a href="#">Digital <span>Products</span></a></h2>
+                                    <p>
+                                        We offer a wide range of digital products, from games in multiple plateformes,softwares and steaming services.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="single-service-item">
+                                    <div class="single-service-icon">
+                                        <img src="{% static 'main/assets/images/services/pcbuild.jpg' %}" alt="img"/>
+                                    </div>
+                                    <h2><a href="#">Custom PC Builds</a></h2>
+                                    <p>
+                                        With our custom PC builds, you’re guaranteed a powerful, reliable, and stylish system that fits your lifestyle, needs, and budget.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="single-service-item">
+                                    <div class="single-service-icon">
+                                        <img src="{% static 'main/assets/images/services/repair.jpg' %}" alt="img"/>
+                                    </div>
+                                    <h2><a href="#">Repair & Cleaning</a></h2>
+                                    <p>
+                                        Diagnosing and solving problems related to computer components, changing and solving operating system problems. 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.container-->
+                
+            </section>
+		<!--service end-->
+
+		<!--new-products start -->
+            <section id="new-products" class="new-products">
+                <div class="container">
+                    <div class="section-header">
+                        <p>checkout <span>the</span> latest products</p>
+                        <h2>newest products</h2>
+                    </div>
+                    <div class="new-product-content">
+                        <div class="owl-carousel owl-theme" id="new-products-carousel">
+                            {% for product in recent_products %}
+                            <div class="new-product-item">
+                                <div class="single-new-product-item">
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-12">
+                                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="max-height: 400px; max-width: 100%%; object-fit: contain;">
+                                        </div>
+                                        <div class="col-md-5 col-sm-12">
+                                            <div class="new-products-txt">
+                                                <h2><a href="#">{{ product.brand }} <span> {{ product.name }}</span></a></h2>
+                                                <p>
+                                                    {{ product.description }} 
+                                                </p>
+                                                <div class="price">
+                                                    <a>
+                                                        Price : {{ product.price}} DZD
+                                                    </a>
+                                                </div>
+                                                <button class="welcome-btn new-products-btn" onclick="window.location.href='#'">
+                                                    view details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+		<!--new-products end -->
+
+		<!--featured-products start -->
+            <section id="featured-products" class="featured-products">
+				<div class="container">
+					<div class="section-header">
+						<p>All products</p>
+						<h2>featured products</h2>
+					</div>
+					<div class="featured-products-content">
+						<div class="row">
+							{% for product in products %}
+							<div class="col-lg-3 col-md-4 col-sm-6">
+								<div class="single-featured-products">
+									<div class="featured-img-box">
+										<div class="featured-products-img">
+											<img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="max-height: 400px; max-width: 100%%; object-fit: contain;">
+											{% comment %} <img src="main/assets/images/featured-products/fc4.png" alt="products"> {% endcomment %}
+										</div>
+										<div class="featured-model-info">
+											<p>
+												<span class="featured-mi-span">Type: {{ product.hardware_type }}</span> <br/>
+												<span class="featured-mi-span">Condition : {{ product.condition }}</span> <br/>
+												<span class="featured-mi-span">Stock : {{ product.stock }} </span> <br/>
+												<span class="featured-mi-span">Price : <strong>{{ product.price }} DZD</strong>  </span>
+											</p>
+										</div>
+									</div>
+									<div class="featured-products-txt">
+										<h2><a href="#">{{ product.brand}} <span> {{ product.name }}</span></a></h2>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</section>
+		<!--featured-products end -->
+
+		<!--brand strat -->
+			<section id="brand" class="brand">
+				<div class="container">
+					<div class="brand-area">
+						<div class="owl-carousel owl-theme brand-item">
+							<div class="item">
+								<a href="#">
+									<img src="{% static 'main/assets/images/brand/nvidia.png' %}" alt="nvidia-logo" />
+								</a>
+							</div>
+							<div class="item">
+								<a href="#">
+									<img src="{% static 'main/assets/images/brand/amd.png' %}" alt="amd-logo" />
+								</a>
+							</div>
+							<div class="item">
+								<a href="#">
+									<img src="{% static 'main/assets/images/brand/intel.png' %}" alt="intel-logo" />
+								</a>
+							</div>
+							<div class="item">
+								<a href="#">
+									<img src="{% static 'main/assets/images/brand/tp-link.png' %}" alt="tp-link-logo" />
+								</a>
+							</div>
+							<div class="item">
+								<a href="#">
+									<img src="{% static 'main/assets/images/brand/gigabyte.png' %}" alt="gigabyte-logo" />
+								</a>
+							</div>
+							<div class="item">
+								<a href="#">
+									<img src="{% static 'main/assets/images/brand/adata.png' %}" alt="adata-logo" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		<!--brand end -->
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "main/header-footer.html" %}
+{% load static %}
+
+
+{% block imports %}
+
+    <link rel="stylesheet" href="{% static 'main/assets/css/shop.css' %}">
+    
+{% endblock %}
+
+
+{% block header %}
+
+    <header>
+        <section id="home" class="welcome-hero">
+            <!-- top-area Start -->
+            <div class="top-area">
+                <div class="header-area" style="background-color:rgb(0, 0, 0);">
+                    <!-- Start Navigation -->
+                    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+                        <div class="container">
+                            <!-- Start Header Navigation -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <a class="navbar-brand" href="{% url 'home'%}">Garanda Tech<span></span></a>
+                            </div>
+                            <!-- End Header Navigation -->
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                                    <li class=" scroll active"><a href="#home">home</a></li>
+                                    <li class="scroll"><a href="#service">service</a></li>
+                                    <li class="scroll"><a href="#new-products">new products</a></li>
+                                    <li class="scroll"><a href="#brand">brands</a></li>
+                                    <li class="scroll"><a href="#contact">contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- End Navigation -->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </section>
+    </header>
+
+{% endblock%}
+
+
+{% block content %}
+    
+    <!-- search-bar-section section start -->
+        <section id="search-bar-section" class="search-bar-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-md">
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                            <input type="text" class="form-control" placeholder="Quickly search for product here ...">
+                            <button class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- search-bar-section section ends -->
+    
+    <!--hardware-type start -->
+        <section id="hardware-type" class="hardware-type">
+            <div class="container">
+                <div class="hardware-type-area">
+                    <div class="owl-carousel owl-theme hardware-type-item">
+                        {% for hardware_type in hardware_types %}
+                            <div class="item">
+                                <a href="#">
+                                    <img src="{{ hardware_type.image.url }}" class="rounded-circle" alt="{{ hardware_type.name }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+                                    <p style="text-align: center;">{{ hardware_type.name }}</p>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!--hardware-type end -->
+
+    <!--products start -->
+        <section id="products" >
+            <div class="container">
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="product-img-box">
+                            <div class="products-img">
+                                <img src="{{ product.image.url }}" class="" alt="{{ product.name }}">
+                                <style>
+                                    .products-img img {
+                                        width: 100%;
+                                        height: auto;
+                                        max-height: 200px;
+                                        object-fit: cover;
+                                    }
+                                    .product-img-box {
+                                        height: 100%;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: space-between;
+                                    }
+                                </style>
+                            </div>
+                            <div class="product-model-info">
+                                <p>
+                                    <span class="product-mi-span">Type: {{ product.hardware_type }}</span> <br/>
+                                    <span class="product-mi-span">Condition : {{ product.condition }}</span> <br/>
+                                    <span class="product-mi-span">Stock : {{ product.stock }} </span> <br/>
+                                </p>
+                            </div>
+                            <div class="product-model-price">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <p>
+                                        <span class="product-price-span">Price : <strong>{{ product.price }} DZD</strong></span>
+                                    </p>
+                                    <button href="#" class="btn ">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="products-txt">
+                            <a href="#">{{ product.brand}} <span> {{ product.name }}</span></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    <!--products end -->
+
+{% endblock %}
