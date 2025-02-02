@@ -1,6 +1,10 @@
 media
 ./media
-
+./scannerwork
+./sonarlint
+.sonarlint
+.scannerwork
+.vscode
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

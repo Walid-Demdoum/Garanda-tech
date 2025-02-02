@@ -12,7 +12,10 @@ def home(request):
                                               'recent_products':recent_products})
 def shop(request):
     products = Product.objects.all()
-    # hardware_types = HardwareType.objects.filter(products__in=products).distinct()
+    """
+        another possible way to get hardware types,filtered by products
+        hardware_types = HardwareType.objects.filter(products__in=products).distinct()
+    """
     hardware_types = HardwareType.objects.all()
     context = {'products': products, 'hardware_types': hardware_types,}
     return render(request, 'main/shop.html', context)
