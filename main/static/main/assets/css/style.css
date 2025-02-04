@@ -739,8 +739,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 }
 ::-webkit-scrollbar{
 	width: 10px;
-	height: 120px;
-	width: 13px;
+	height: 70px;
 	overflow-y: scroll;
 }
 

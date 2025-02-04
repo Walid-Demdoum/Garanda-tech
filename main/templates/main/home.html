@@ -114,12 +114,11 @@
 								<div class="single-featured-products">
 									<div class="featured-img-box">
 										<div class="featured-products-img">
-											<img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="max-height: 400px; max-width: 100%%; object-fit: contain;">
-											{% comment %} <img src="main/assets/images/featured-products/fc4.png" alt="products"> {% endcomment %}
+											<img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
 										</div>
 										<div class="featured-model-info">
 											<p>
-												<span class="featured-mi-span">Type: {{ product.hardware_type }}</span> <br/>
+												<span class="featured-mi-span">Category: {{ product.hardware_type }}</span> <br/>
 												<span class="featured-mi-span">Condition : {{ product.condition }}</span> <br/>
 												<span class="featured-mi-span">Stock : {{ product.stock }} </span> <br/>
 												<span class="featured-mi-span">Price : <strong>{{ product.price }} DZD</strong>  </span>

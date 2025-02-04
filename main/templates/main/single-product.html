@@ -1,16 +1,19 @@
 {% extends "main/header-footer.html" %}
 {% load static %}
 
-
 {% block imports %}
-
     <link rel="stylesheet" href="{% static 'main/assets/css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'main/assets/css/single-product-page.css' %}">
+    <link rel="stylesheet" href="{% static 'main/assets/css/bootstrap.min.css' %}">
     
+{% endblock %}
+
+{% block title%}
+<title>Garanda Tech : {{ product.name }}</title>
 {% endblock %}
 
 
 {% block header %}
-
     <header>
         <section id="home" class="welcome-hero">
             <!-- top-area Start -->
@@ -33,8 +36,6 @@
                                 <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                                     <li class=" scroll active"><a href="#home">home</a></li>
                                     <li class="scroll"><a href="#service">service</a></li>
-                                    <li class="scroll"><a href="#new-products">new products</a></li>
-                                    <li class="scroll"><a href="#brand">brands</a></li>
                                     <li class="scroll"><a href="#contact">contact</a></li>
                                 </ul>
                             </div>
@@ -46,13 +47,12 @@
             </div>
         </section>
     </header>
-
 {% endblock%}
 
-
 {% block content %}
+
+    <div class="content" style="background-color: #f5f5f5;">
     
-    <!-- search-bar-section section start -->
         <section id="search-bar-section" class="search-bar-section">
             <div class="container">
                 <div class="section-header">
@@ -68,63 +68,35 @@
                 </div>
             </div>
         </section>
-    <!-- search-bar-section section ends -->
-    
-    <!--hardware-type start -->
-        <section id="hardware-type" class="hardware-type">
-            <div class="container">
-                <div class="hardware-type-area">
-                    <div class="owl-carousel owl-theme hardware-type-item">
-                        {% for hardware_type in hardware_types %}
-                            <div class="item">
-                                <a href="#">
-                                    <img src="{{ hardware_type.image.url }}" class="rounded-circle" alt="{{ hardware_type.name }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
-                                    <p style="text-align: center;">{{ hardware_type.name }}</p>
-                                </a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </section>
-    <!--hardware-type end -->
-
-    <!--products start -->
-        <section id="products" >
+        <section id="single-product" class="single-product">
             <div class="container">
                 <div class="row">
-                    {% for product in products %}
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="product-img-box">
-                            <div class="products-img">
-                                <img src="{{ product.image.url }}" class="" alt="{{ product.name }}">
-                            </div>
-                            <div class="product-model-info">
-                                <p>
-                                    <span class="product-mi-span">Type: {{ product.hardware_type }}</span> <br/>
-                                    <span class="product-mi-span">Condition : {{ product.condition }}</span> <br/>
-                                    <span class="product-mi-span">Stock : {{ product.stock }} </span> <br/>
-                                </p>
-                            </div>
-                            <div class="product-model-price">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <p>
-                                        <span class="product-price-span">Price : <strong>{{ product.price }} DZD</strong></span>
-                                    </p>
-                                    <button onclick="location.href='{% url 'singleProduct' product.id %}'" class="btn">
-                                        <i class="fa fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="products-txt">
-                            <a href="#">{{ product.brand}} <span> {{ product.name }}</span></a>
+                    <div class="col-md-6">
+                        <div class="product-image">
+                            <img src="{{ product.image.url }}" alt="product-image">
                         </div>
                     </div>
-                    {% endfor %}
+                    <div class="col-md-6">
+                        <div class="product-details">
+                            <h1> {{ product.brand}} {{ product.name }} </h1>
+                            <p> {{ product.description }} </p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">Item 1</li>
+                                <li class="mb-2">Item 2</li>
+                                <li class="mb-2">Item 3</li>
+                                <li class="mb-2">Item 4</li>
+                                <li class="mb-2">Item 5</li>
+                            </ul>
+                            <div>
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-    <!--products end -->
+    </div>
+
+    
 
 {% endblock %}
